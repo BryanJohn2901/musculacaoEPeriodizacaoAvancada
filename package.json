@@ -1,0 +1,12 @@
+{
+  "name": "musculacao-periodizacao-avancada",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o dist/css/style.css --minify",
+    "build:dev": "tailwindcss -i src/input.css -o dist/css/style.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
