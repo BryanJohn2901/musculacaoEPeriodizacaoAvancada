@@ -877,6 +877,98 @@
         </div>
     </div>
 
+    <!-- Faixa Verde - Mês do Consumidor -->
+    <div id="faixa-consumidor" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; background: linear-gradient(90deg, #00D26A 0%, #05994A 100%); padding: 0.75rem 1rem; box-shadow: 0 -10px 25px -5px rgba(0, 210, 106, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.2);">
+        <div id="faixa-container" style="max-width: 1300px; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;">
+            <div id="faixa-text-container" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; width: 100%;">
+                <span style="background-color: #13130F; color: #00D26A; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.3rem; box-shadow: 0 2px 4px rgba(0,0,0,0.2); white-space: nowrap;">
+                    <i class="fas fa-calendar-alt"></i> DURANTE TODO O MÊS
+                </span>
+                <p style="color: #13130F; font-weight: 800; font-size: 0.75rem; text-align: center; margin: 0; line-height: 1.4; font-family: Inter, sans-serif; white-space: normal;">
+                    MÊS DO CONSUMIDOR <span style="font-weight: 500; opacity: 0.7; margin: 0 0.2rem;">|</span> MAIS DE 20% OFF NA PÓS
+                </p>
+            </div>
+            <button type="button" onclick="abrirPopupVerde(); return false;" style="background-color: #13130F; color: #00D26A; font-weight: 800; font-family: Inter, sans-serif; padding: 0.6rem 1.5rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: all 200ms; white-space: nowrap; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.2); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; justify-content: center;">
+                <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Acesso Antecipado
+            </button>
+        </div>
+    </div>
+
+    <style>
+        @media (min-width: 768px) {
+            #faixa-container {
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                gap: 1.5rem !important;
+            }
+            #faixa-text-container {
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 1rem !important;
+                width: auto !important;
+            }
+            #faixa-text-container p {
+                font-size: 0.875rem !important;
+                white-space: nowrap !important;
+                text-align: left !important;
+            }
+            #faixa-consumidor button {
+                width: auto !important;
+            }
+        }
+    </style>
+
+    <!-- Popup Verde - Mês do Consumidor -->
+    <div id="popup-verde" style="position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); opacity: 0; transition: opacity 500ms ease-out;" aria-hidden="true">
+        <div style="position: relative; background-color: rgb(26, 26, 26); border: 2px solid #00D26A; border-radius: 1rem; max-width: 42rem; width: 100%; padding: 2.5rem; transform: scale(0.95); transition: all 500ms ease-out; box-shadow: 0 0 20px rgba(0, 210, 106, 0.5), 0 0 40px rgba(0, 210, 106, 0.3), 0 0 60px rgba(0, 210, 106, 0.2), inset 0 0 20px rgba(0, 210, 106, 0.1);">
+            <button type="button" id="popup-fechar-verde" style="position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: rgb(156, 163, 175); border: none; cursor: pointer; transition: all 200ms;" onmouseover="this.style.backgroundColor='rgba(0, 210, 106, 0.2)'; this.style.color='white';" onmouseout="this.style.backgroundColor='rgba(255, 255, 255, 0.05)'; this.style.color='rgb(156, 163, 175)';" aria-label="Fechar">
+                <i class="fas fa-times"></i>
+            </button>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo-consumidor.svg" alt="Mês do Consumidor" style="max-width: 200px; height: auto; margin: 0 auto 1rem;">
+            </div>
+            <h3 style="font-family: Inter, sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem; text-align: center;">Preencha seus dados</h3>
+            <div style="background-color: rgba(0, 210, 106, 0.1); border-left: 3px solid #00D26A; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 0.5rem;">
+                <p style="color: rgb(209, 213, 219); font-size: 0.9375rem; line-height: 1.6; margin: 0 0 0.75rem 0;">
+                    <strong style="color: #00D26A;">Mês do Consumidor da Educação Física</strong><br>
+                    Durante todo o mês de março
+                </p>
+                <p style="color: rgb(209, 213, 219); font-size: 0.9375rem; line-height: 1.6; margin: 0;">
+                    <strong style="color: white;">Mais de 20% de desconto</strong> na sua pós-graduação. Entre no grupo VIP e receba acesso antecipado.
+                </p>
+            </div>
+            <form id="form_bb_verde" data-product="MPA-SC" style="margin-top: 1.5rem;">
+                <input type="hidden" name="utm_source" class="lead-utm-verde" data-utm="utm_source" value="">
+                <input type="hidden" name="utm_term" class="lead-utm-verde" data-utm="utm_term" value="">
+                <input type="hidden" name="utm_campaign" class="lead-utm-verde" data-utm="utm_campaign" value="">
+                <input type="hidden" name="utm_medium" class="lead-utm-verde" data-utm="utm_medium" value="">
+                <input type="hidden" name="utm_content" class="lead-utm-verde" data-utm="utm_content" value="">
+                <input type="hidden" name="url" class="lead-utm-verde" data-utm="url" value="">
+
+                <div style="margin-bottom: 1rem;">
+                    <label for="lead-nome-verde" style="display: block; font-size: 0.875rem; font-weight: 500; color: rgb(209, 213, 219); margin-bottom: 0.375rem;">Nome completo</label>
+                    <input type="text" id="lead-nome-verde" name="nome" required placeholder="Seu nome" style="width: 100%; padding: 0.875rem 1rem; border-radius: 0.75rem; background-color: rgb(3, 9, 18); border: 1px solid rgba(255, 255, 255, 0.1); color: white; font-size: 0.875rem; outline: none; transition: border-color 200ms;" onfocus="this.style.borderColor='#00D26A'; this.style.boxShadow='0 0 0 1px #00D26A';" onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.boxShadow='none';">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label for="lead-email-verde" style="display: block; font-size: 0.875rem; font-weight: 500; color: rgb(209, 213, 219); margin-bottom: 0.375rem;">E-mail principal</label>
+                    <input type="email" id="lead-email-verde" name="email" required placeholder="seu@email.com" style="width: 100%; padding: 0.875rem 1rem; border-radius: 0.75rem; background-color: rgb(3, 9, 18); border: 1px solid rgba(255, 255, 255, 0.1); color: white; font-size: 0.875rem; outline: none; transition: border-color 200ms;" onfocus="this.style.borderColor='#00D26A'; this.style.boxShadow='0 0 0 1px #00D26A';" onblur="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.boxShadow='none';">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label for="lead-phone-verde" style="display: block; font-size: 0.875rem; font-weight: 500; color: rgb(209, 213, 219); margin-bottom: 0.375rem;">WhatsApp</label>
+                    <div style="display: flex; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); background-color: rgb(3, 9, 18);" onfocusin="this.style.borderColor='#00D26A'; this.style.boxShadow='0 0 0 1px #00D26A';" onfocusout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.boxShadow='none';">
+                        <span style="display: inline-flex; align-items: center; padding: 0.875rem 1rem; background-color: #00D26A; color: black; font-weight: 900; user-select: none; flex-shrink: 0;">+55</span>
+                        <input type="text" id="lead-phone-verde" name="telefone" required placeholder="(11) 99999-9999" inputmode="numeric" maxlength="15" class="lead-phone-verde" style="flex: 1; padding: 0.875rem 1rem; background-color: transparent; border: none; color: white; font-size: 0.875rem; outline: none; min-width: 0;">
+                    </div>
+                    <p class="lead-phone-err-verde" style="color: rgb(248, 113, 113); font-size: 0.75rem; margin-top: 0.5rem; display: none; font-weight: 500;">Informe o DDD e o número completo.</p>
+                </div>
+                <button type="submit" style="width: 100%; background-color: #00D26A; color: black; font-family: Inter, sans-serif; font-weight: 900; padding: 1rem; margin-top: 1rem; border-radius: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; border: none; cursor: pointer; transition: all 200ms; box-shadow: 0 0 20px rgba(0, 210, 106, 0.4);" onmouseover="this.style.backgroundColor='#05B147'; this.style.transform='translateY(-2px)';" onmouseout="this.style.backgroundColor='#00D26A'; this.style.transform='translateY(0)';" class="btn-submit-verde">
+                    Acesso Antecipado
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -894,7 +986,7 @@
         var btnEnviar = document.getElementById('btn-enviar-form');
 
         var WEBHOOK_URL = 'https://hook.us1.make.com/bhigavwc6bfhskmnicov25r6jv9fnt1p?produto=MPA';
-        var REDIRECT_BASE = 'https://chk.eduzz.com/39YDPQX49O';
+        var REDIRECT_BASE = 'https://pos.personaltraineracademy.com.br/obg-obrigado-mpa/';
 
         function getUrlParams() {
             var params = {};
@@ -1014,16 +1106,7 @@
             var utm_content = document.getElementById('utm_content').value;
             var url = document.getElementById('url').value;
 
-            var redirectUrl = REDIRECT_BASE +
-                '?name=' + encodeURIComponent(nome) +
-                '&email=' + encodeURIComponent(email) +
-                '&phone=' + encodeURIComponent(telefone) +
-                '&utm_source=' + encodeURIComponent(utm_source) +
-                '&utm_term=' + encodeURIComponent(utm_term) +
-                '&utm_campaign=' + encodeURIComponent(utm_campaign) +
-                '&utm_medium=' + encodeURIComponent(utm_medium) +
-                '&utm_content=' + encodeURIComponent(utm_content) +
-                '&url=' + encodeURIComponent(url);
+            var redirectUrl = REDIRECT_BASE;
 
             btnEnviar.disabled = true;
             btnEnviar.textContent = 'Enviando...';
@@ -1072,6 +1155,183 @@
             avisoCookies.classList.add('hidden');
             avisoCookies.setAttribute('aria-hidden', 'true');
         });
+
+        // Popup verde + barra verde
+        var REDIRECT_URL_VERDE = 'https://pos.personaltraineracademy.com.br/obg-obrigado-mpa/';
+
+        function formatarTelefoneVerde(val) {
+            var d = val.replace(/\D/g, '');
+            if (d.startsWith('55') && d.length > 2) d = d.slice(2);
+            d = d.slice(0, 11);
+            if (d.length === 0) return '';
+            if (d.length <= 2) return '(' + d;
+            if (d.length <= 7) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+            return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7, 11);
+        }
+
+        function getCurrentUtmMap() {
+            var out = {};
+            var params = new URLSearchParams(window.location.search);
+            params.forEach(function (value, key) {
+                if (key.indexOf('utm_') === 0) out[key] = value;
+            });
+            return out;
+        }
+
+        function buildRedirectUtmsVerde() {
+            var current = getCurrentUtmMap();
+            try {
+                if (Object.keys(current).length > 0) {
+                    localStorage.setItem('utm_params', JSON.stringify(current));
+                }
+                var stored = JSON.parse(localStorage.getItem('utm_params') || '{}');
+                var merged = Object.assign({}, stored, current);
+                return merged;
+            } catch (e) {
+                return current;
+            }
+        }
+
+        function preencherUtmsVerde() {
+            var utms = buildRedirectUtmsVerde();
+            document.querySelectorAll('.lead-utm-verde').forEach(function (input) {
+                var utmKey = input.getAttribute('data-utm');
+                if (utmKey === 'url') {
+                    input.value = window.location.href;
+                } else {
+                    input.value = utms[utmKey] || '';
+                }
+            });
+        }
+
+        document.querySelectorAll('.lead-phone-verde').forEach(function (input) {
+            input.addEventListener('input', function () {
+                var pos = this.selectionStart;
+                var oldLen = this.value.length;
+                this.value = formatarTelefoneVerde(this.value);
+                var newLen = this.value.length;
+                this.setSelectionRange(pos + (newLen - oldLen), pos + (newLen - oldLen));
+                var err = document.querySelector('.lead-phone-err-verde');
+                if (err) err.style.display = 'none';
+            });
+        });
+
+        function abrirPopupVerde() {
+            preencherUtmsVerde();
+            var popupVerde = document.getElementById('popup-verde');
+            if (!popupVerde) return;
+            popupVerde.style.display = 'flex';
+            popupVerde.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    popupVerde.style.opacity = '1';
+                    var content = popupVerde.querySelector('div');
+                    if (content) content.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        function fecharPopupVerde() {
+            var popupVerde = document.getElementById('popup-verde');
+            if (!popupVerde) return;
+            popupVerde.style.opacity = '0';
+            var content = popupVerde.querySelector('div');
+            if (content) content.style.transform = 'scale(0.95)';
+            setTimeout(function () {
+                popupVerde.style.display = 'none';
+                popupVerde.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }, 500);
+            sessionStorage.setItem('popupVerdeFechado', 'true');
+        }
+
+        preencherUtmsVerde();
+        window.addEventListener('popstate', preencherUtmsVerde);
+        document.getElementById('popup-fechar-verde') && document.getElementById('popup-fechar-verde').addEventListener('click', fecharPopupVerde);
+        document.getElementById('popup-verde') && document.getElementById('popup-verde').addEventListener('click', function (e) {
+            if (e.target && e.target.id === 'popup-verde') fecharPopupVerde();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') fecharPopupVerde();
+        });
+
+        var formVerde = document.getElementById('form_bb_verde');
+        if (formVerde) {
+            formVerde.addEventListener('submit', function (e) {
+                e.preventDefault();
+                preencherUtmsVerde();
+
+                var nomeInput = this.querySelector('input[name="nome"]');
+                var emailInput = this.querySelector('input[name="email"]');
+                var telefoneInput = this.querySelector('input[name="telefone"]');
+                var errorMsg = this.querySelector('.lead-phone-err-verde');
+                var btnSubmit = this.querySelector('.btn-submit-verde');
+
+                var telDigitos = telefoneInput.value.replace(/\D/g, '');
+                if (telDigitos.startsWith('55') && telDigitos.length > 2) telDigitos = telDigitos.slice(2);
+                if (telDigitos.length < 10) {
+                    errorMsg.style.display = 'block';
+                    telefoneInput.focus();
+                    return;
+                }
+
+                btnSubmit.disabled = true;
+                btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processando...';
+
+                var telefone = '+55' + telDigitos;
+                var formData = new FormData(this);
+                var dados = {
+                    nome: nomeInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    telefone: telefone,
+                    utm_source: formData.get('utm_source') || '',
+                    utm_term: formData.get('utm_term') || '',
+                    utm_campaign: formData.get('utm_campaign') || '',
+                    utm_medium: formData.get('utm_medium') || '',
+                    utm_content: formData.get('utm_content') || '',
+                    url: formData.get('url') || window.location.href,
+                    produto: 'MPA'
+                };
+
+                fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                })
+                    .then(function () {
+                        var utms = buildRedirectUtmsVerde();
+                        var params = new URLSearchParams({
+                            name: dados.nome,
+                            email: dados.email,
+                            phone: dados.telefone,
+                            url: dados.url || window.location.href,
+                            utm_source: dados.utm_source || utms.utm_source || '',
+                            utm_campaign: dados.utm_campaign || utms.utm_campaign || '',
+                            utm_medium: dados.utm_medium || utms.utm_medium || '',
+                            utm_term: dados.utm_term || utms.utm_term || '',
+                            utm_content: dados.utm_content || utms.utm_content || ''
+                        });
+                        window.location.href = REDIRECT_URL_VERDE;
+                    })
+                    .catch(function () {
+                        var utms = buildRedirectUtmsVerde();
+                        var params = new URLSearchParams({
+                            name: dados.nome,
+                            email: dados.email,
+                            phone: dados.telefone,
+                            url: dados.url || window.location.href,
+                            utm_source: dados.utm_source || utms.utm_source || '',
+                            utm_campaign: dados.utm_campaign || utms.utm_campaign || '',
+                            utm_medium: dados.utm_medium || utms.utm_medium || '',
+                            utm_term: dados.utm_term || utms.utm_term || '',
+                            utm_content: dados.utm_content || utms.utm_content || ''
+                        });
+                        window.location.href = REDIRECT_URL_VERDE;
+                    });
+            });
+        }
     </script>
 
 </body>
